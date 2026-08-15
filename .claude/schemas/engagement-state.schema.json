@@ -1,0 +1,534 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://security-framework.local/schemas/engagement-state.schema.json",
+  "title": "Security Framework Engagement State",
+  "description": "Persistent state contract for security and QA engagements managed by the Security Orchestrator.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "engagement",
+    "scope",
+    "status",
+    "workflow",
+    "tasks",
+    "checkpoints",
+    "findings",
+    "tool_executions",
+    "recovery",
+    "timestamps"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of the engagement state schema.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+
+    "engagement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "created_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the engagement.",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "owner": {
+          "type": "string"
+        }
+      }
+    },
+
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorized"
+      ],
+      "properties": {
+        "authorized": {
+          "type": "boolean",
+          "description": "Explicit authorization status for the engagement."
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "excluded_targets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "allowed_operations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "restrictions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "initialized",
+        "in_progress",
+        "completed",
+        "interrupted",
+        "failed",
+        "closed"
+      ]
+    },
+
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_phase",
+        "current_task",
+        "next_action"
+      ],
+      "properties": {
+        "current_phase": {
+          "type": "string",
+          "enum": [
+            "initialization",
+            "reconnaissance",
+            "static_analysis",
+            "dynamic_security_testing",
+            "qa_testing",
+            "code_review",
+            "vulnerability_analysis",
+            "reporting",
+            "completion"
+          ]
+        },
+        "current_task": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "current_agent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "next_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "completed_phases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "tasks": {
+      "type": "array",
+      "description": "Execution history for all meaningful workflow tasks.",
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+
+    "checkpoints": {
+      "type": "array",
+      "description": "Known valid recovery points for the engagement.",
+      "items": {
+        "$ref": "#/$defs/checkpoint"
+      }
+    },
+
+    "findings": {
+      "type": "array",
+      "description": "Findings discovered and tracked during the engagement.",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+
+    "tool_executions": {
+      "type": "array",
+      "description": "Tracked executions of external tools and MCP capabilities.",
+      "items": {
+        "$ref": "#/$defs/tool_execution"
+      }
+    },
+
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resume_required",
+        "last_known_valid_checkpoint"
+      ],
+      "properties": {
+        "resume_required": {
+          "type": "boolean"
+        },
+        "last_known_valid_checkpoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "interrupted_task_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recovery_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recovery_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+
+    "timestamps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "created_at",
+        "updated_at",
+        "last_checkpoint_at"
+      ],
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "last_checkpoint_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "task": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "phase",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "type": "string"
+        },
+        "agent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "skipped"
+          ]
+        },
+        "execution_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "result_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    },
+
+    "checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "created_at",
+        "phase",
+        "task",
+        "state_status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "phase": {
+          "type": "string"
+        },
+        "task": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "state_status": {
+          "type": "string",
+          "enum": [
+            "valid",
+            "recovered",
+            "superseded"
+          ]
+        },
+        "next_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "task_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "severity": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "critical",
+            "high",
+            "medium",
+            "low",
+            "informational",
+            null
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "discovered",
+            "under_review",
+            "validated",
+            "rejected",
+            "accepted_risk",
+            "resolved"
+          ]
+        },
+        "source": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "evidence_references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "validated_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+
+    "tool_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "tool",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "agent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "started",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "unknown"
+          ]
+        },
+        "started_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "completed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "result_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

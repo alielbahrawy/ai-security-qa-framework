@@ -29,4 +29,4 @@ phases: [security, ethics, response]
 ## Auditability
 - Keep communication precise, reproducible, and compatible with audit trails.
 - Identify limitations, failed capabilities, and missing evidence instead of hiding them.
-- Preserve clear distinctions between behavioral guidance and framework workflow, tool selection, severity, state management, and agent responsibilities.
+- Keep this profile limited to behavioral guidance.

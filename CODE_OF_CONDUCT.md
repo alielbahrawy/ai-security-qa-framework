@@ -1,41 +1,43 @@
-# Code of Conduct
+# Contributor Covenant Code of Conduct
 
 ## Our Pledge
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in this project a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We pledge to make participation in this project a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socioeconomic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
 ## Our Standards
 
-Examples of behavior that contributes to a positive environment for all participants:
+Examples of behavior that contributes to a positive environment include:
 
 - Using welcoming and inclusive language
 - Being respectful of differing viewpoints and experiences
 - Gracefully accepting constructive criticism
 - Focusing on what is best for the community
-- Showing empathy towards other community members
+- Showing empathy toward other community members
 
-Examples of unacceptable behavior:
+Examples of unacceptable behavior include:
 
-- The use of sexualized language or advances
+- Sexualized language or imagery, and unwelcome sexual attention or advances
 - Trolling, insulting or derogatory comments, and personal or political attacks
 - Public or private harassment
 - Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+- Other conduct that could reasonably be considered inappropriate in a professional setting
 
-## Enforcement
+## Enforcement Responsibilities
 
-Instances of unacceptable behavior may be reported to the project maintainers at [maintainer email or contact]. All complaints will be reviewed and investigated and will result in a response that is deemed appropriate and fair.
+Project maintainers are responsible for clarifying and enforcing these standards and may take appropriate and fair corrective action in response to behavior they consider inappropriate, threatening, offensive, or harmful.
 
-Project maintainers have the right to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned with this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+Maintainers may remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned with this Code of Conduct, and may temporarily or permanently ban contributors for other behaviors they deem inappropriate.
 
 ## Scope
 
-This Code of Conduct applies within project spaces and in one-on-one communications relating to project business. A project maintainer can further define what is considered project space and scope.
+This Code of Conduct applies within project spaces and when an individual is representing the project or its community in public spaces. Examples of representing the project include using an official project email address, posting through an official social media account, or acting as an appointed representative at an online or offline event.
+
+## Reporting
+
+Report unacceptable behavior to the project maintainers through the repository's private contact channel. Do not include unrelated personal data or security-sensitive information in a public issue.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Convenant](https://www.contributor-covenant.org), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
-
-## Questions
-
-For further questions contact the project maintainers.
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 2.1. The full text is available at <https://www.contributor-covenant.org/version/2/1/code_of_conduct.html>.

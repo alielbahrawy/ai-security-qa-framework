@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "engagement": {
+    "id": "pending",
+    "name": "Pending Engagement",
+    "description": "",
+    "created_at": "1970-01-01T00:00:00Z",
+    "owner": ""
+  },
+  "scope": {
+    "authorized": false,
+    "targets": [],
+    "excluded_targets": [],
+    "allowed_operations": [],
+    "restrictions": []
+  },
+  "status": "new",
+  "workflow": {
+    "current_phase": "initialization",
+    "current_task": null,
+    "current_agent": null,
+    "next_action": null,
+    "completed_phases": []
+  },
+  "tasks": [],
+  "checkpoints": [],
+  "findings": [],
+  "tool_executions": [],
+  "recovery": {
+    "resume_required": false,
+    "last_known_valid_checkpoint": null,
+    "interrupted_task_id": null,
+    "recovery_reason": null,
+    "recovery_action": null
+  },
+  "timestamps": {
+    "created_at": "1970-01-01T00:00:00Z",
+    "updated_at": "1970-01-01T00:00:00Z",
+    "last_checkpoint_at": null
+  }
+}

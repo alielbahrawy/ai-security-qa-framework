@@ -1,55 +1,64 @@
-# Security Guidelines
+# Security Policy
 
 ## Authorized Use Only
 
-This framework is designed for **authorized security assessments only**. Do not test systems without explicit permission from the system owner.
+This framework is for authorized security assessment, defensive engineering, and approved research only. Do not test systems without explicit permission from the system owner.
 
-## Scope Restrictions
+## Scope and Authorization
 
-- **In-scope**: Targets explicitly authorized for testing
-- **Out-of-scope**: Production systems, third-party services, payment providers, unrelated databases
-- **Discovery does not create authorization**: Finding new assets does not grant testing permission
+Before active testing, define:
 
-## Safe Testing Practices
+- authorized targets and environments
+- in-scope endpoints, repositories, hosts, and APIs
+- excluded systems and third-party services
+- authorized test accounts and data
+- allowed operations and safety limits
 
-### Low Impact Defaults
+Discovery does not create authorization. A newly discovered asset remains untested until its scope is confirmed.
 
-- Use rate-limited testing
-- Avoid destructive operations
-- Preserve data integrity
-- Use test accounts only
-- Monitor service stability
+## Safe Testing
 
-### Production Precautions
+Use controlled, non-destructive, rate-limited testing with synthetic data and test accounts where possible. Preserve evidence without copying unnecessary sensitive information.
 
-- **Default approach**: Low impact, controlled, rate limited, non-destructive, scope restricted
-- **Avoid**: Destructive operations, data deletion, denial of service, account lockout, high-volume testing, uncontrolled exploitation
-- **Unless explicitly authorized**: Any destructive or high-impact testing
+For production environments, default to low-impact, monitoring-aware validation. Do not perform denial-of-service testing, data deletion, account lockout, high-volume scanning, uncontrolled exploitation, or other destructive actions unless explicitly authorized and appropriate.
+
+If scope becomes unclear, authorization fails, sensitive data appears unexpectedly, or service stability is at risk: stop active testing and document the limitation.
+
+## Secrets and Private Data
+
+Never commit or publicly post:
+
+- API keys, tokens, passwords, credentials, or private keys
+- real target URLs or infrastructure details from private engagements
+- customer or personal data
+- private findings or unredacted evidence
+- local MCP configuration containing secrets
+- machine-specific paths or local debug artifacts
+
+Use placeholders in examples. Rotate exposed credentials immediately through the appropriate owner.
 
 ## Responsible Disclosure
 
-- Report security issues to the appropriate point of contact
-- Include sufficient evidence to reproduce findings
-- Do not publicly disclose vulnerabilities before remediation is complete
-- Follow the engagement's reporting procedures
+For vulnerabilities in this framework:
 
-## What Should Not Be Publicly Posted
+1. Do not open a public issue containing exploitable details.
+2. Contact the project maintainers through the repository's private security channel, when available.
+3. Include affected version or commit, impact, reproducible steps, and a minimal sanitized proof.
+4. Do not include secrets, personal data, or unrelated target information.
+5. Allow maintainers reasonable time to assess and remediate before public disclosure.
 
-- Real target URLs without authorization scrubbing
-- Credentials, tokens, or passwords from assessments
-- Findings from private assessments without redaction
-- Sensitive evidence containing customer data
-- Machine-specific configuration details
+If no private channel is configured, open a minimal issue asking for a private reporting channel without including sensitive details.
 
-## Authorization Checklist (Before Testing)
+## Reporting Security Issues
 
-1. Target is owned or explicitly authorized
-2. Testing is within defined scope
-3. Environment is appropriate for testing
-4. Credentials are authorized (if required)
-5. Destructive actions are permitted (if applicable)
-6. Safety constraints are understood
+Report framework security issues through the repository's configured GitHub security contact or private maintainer channel. Include only information needed to reproduce and triage the issue. Never publish credentials or live exploitation data in an issue, pull request, discussion, or README.
 
-If authorization is unclear: **Do Not Perform Active Testing**
+For security assessments performed with this framework, follow the engagement's reporting procedure rather than publishing results in this repository.
 
-The framework may continue with safe non-invasive analysis when appropriate.
+## Security Design Principles
+
+- Authorization and scope precede active testing.
+- Tool output is evidence, not an automatic confirmed vulnerability.
+- Findings require validation, impact analysis, and confidence assessment.
+- Security findings and functional QA failures remain distinct.
+- Tool failures and coverage limitations must be reported honestly.

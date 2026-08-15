@@ -1,75 +1,65 @@
-# Contributing to the AI Security & QA Engineering Framework
+# Contributing
+
+Thank you for helping improve the AI Security & QA Engineering Framework. Contributions should improve evidence quality, safety, reproducibility, or usability without weakening authorization boundaries.
 
 ## Repository Structure
 
-- `.claude/` - Framework configuration and internal implementation
-  - `agents/` - Specialized agent implementations
-  - `skills/` - Domain-specific workflow definitions
-  - `rules/` - Execution workflow, tool selection, and severity models
-  - `knowledge/` - Reference materials and vulnerability patterns
-  - `state/` - Persistent execution state (checkpoints, engagement state)
-  - `profiles/` - Behavioral profiles (sanitized for public release)
-  - `schemas/` - JSON schemas for state and findings
-  - `CLAUDE.md` - Core framework instructions
-- Root level - Documentation and project configuration
+- `.claude/CLAUDE.md` — framework-wide principles and architecture
+- `.claude/agents/` — specialized agent responsibilities
+- `.claude/skills/` — reusable domain workflows
+- `.claude/rules/` — workflow, tool-selection, and severity policy
+- `.claude/knowledge/` — security and testing reference material
+- `.claude/state/` — public state guidance and sanitized template state
+- `.claude/schemas/` — machine-readable state schemas
+- `.claude/profiles/` — behavioral and safety profiles
+- Root files — public documentation and project metadata
 
-## How to Contribute
+## Before Contributing
 
-### Documentation Changes
+1. Read `README.md`, `SECURITY.md`, and relevant `.claude/` guidance.
+2. Confirm your change does not include credentials, tokens, personal data, private engagement data, logs, or machine-specific configuration.
+3. Use relative project paths in documentation and examples.
+4. Preserve the separation between orchestration, specialized agents, tools, validation, and reporting.
+5. Do not claim capabilities or tool integrations that are not verified.
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/documentation-update`
-3. Update documentation files in the root directory or appropriate subdirectories
-4. Ensure all examples use relative paths (e.g., `.claude/agents/`)
-5. Do not expose machine-specific paths (e.g., `C:\Users\...`)
-6. Submit a pull request with clear description of changes
+## Documentation Changes
 
-### Agent/Rule/Skill Changes
+- Keep documentation accurate and concise.
+- Document the actual integration type: MCP capability, CLI, or CLI/TUI.
+- Do not describe unverified headless automation as supported.
+- Update related documentation when behavior or public contracts change.
+- Use sanitized examples and placeholders.
 
-1. **Security First**: All changes must undergo security review
-2. **Maintain Separation of Concerns**: 
-   - Agents perform specialized work only
-   - Rules govern workflow and tool selection
-   - Skills define how domain tasks should be performed
-3. **Preserve Framework Integrity**:
-   - Do not break agent-to-tool mapping contracts
-   - Maintain evidence-based validation requirements
-   - Keep security/QA separation intact
-4. Follow the standard contribution workflow above
+## Agent, Rule, Skill, Knowledge, and Schema Changes
 
-### Testing Expectations
+- Keep agent responsibilities within their defined domain.
+- Keep workflow order in rules, tool procedures in tool-selection policy, and risk classification in the severity model.
+- Preserve security and QA separation.
+- Preserve state and schema compatibility unless a deliberate migration is documented.
+- Route security-relevant findings through validation and evidence correlation.
+- Do not add private system prompts, credentials, or engagement artifacts.
 
-- All contributions should maintain backward compatibility where possible
-- Update corresponding documentation for any behavioral changes
-- Test changes in isolated environment before submission
-- For agent/tool changes: verify evidence collection still works correctly
+## Testing Expectations
 
-## Pull Request Expectations
+Before opening a pull request:
 
-1. **Single Responsibility**: PRs should address one logical change
-2. **Clear Description**: Explain what, why, and how
-3. **Documentation Updates**: Include docs changes when behavior changes
-4. **No Secrets**: Verify no credentials, tokens, or sensitive data
-5. **Relative Paths Only**: Use `.claude/` relative paths, never machine-specific
-6. **Security Review**: All security-related changes require additional scrutiny
+- Validate changed Markdown and JSON syntax.
+- Check referenced paths exist.
+- Run relevant tests or tool checks available in your environment.
+- Confirm failures and unavailable tools are documented rather than hidden.
+- For state changes, validate the template against `.claude/schemas/engagement-state.schema.json`.
+- For security changes, include safe, reproducible validation steps.
 
-## Code Style
+Do not run active security tests against systems without explicit authorization and scope.
 
-- Follow existing patterns in the repository
-- Maintain consistent formatting
-- Update frontmatter when creating new files in `.claude/`
-- Preserve JSON schema compatibility for state/files
+## Pull Requests
 
-## Reporting Issues
+- Create one focused branch and pull request per logical change.
+- Explain what changed, why, validation performed, and known limitations.
+- Keep diffs focused; avoid unrelated reformatting or architecture redesign.
+- Do not commit `.env` files, local settings, logs, generated reports, screenshots, credentials, or private findings.
+- Identify any changes that affect public behavior, tool contracts, schemas, or recovery behavior.
 
-Use the standard GitHub issue tracker for:
-- Bug reports
-- Feature requests
-- Documentation improvements
-- Security concerns (follow SECURITY.md guidelines)
+## Reporting Problems
 
-## Security Notes
-
-- Never commit credentials or sensitive data to the repository
-- If you discover a security issue in the framework itself, follow responsible disclosure
-- All contributions must respect the framework's authorization-first principle
+Use GitHub Issues for public bugs, documentation problems, and feature requests that contain no sensitive details. For security concerns, follow `SECURITY.md` and use a private reporting channel.

@@ -1,22 +1,30 @@
-# Environment files
+# Environment and credentials
 .env
 .env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+credentials.json
+secrets.json
 
-# Logs
+# Logs and temporary files
 *.log
-logs/
-debug/
-
-# Temporary files
 *.tmp
 *.temp
+logs/
+debug/
+*.trace
 
-# Dependencies
+# Dependencies and caches
 node_modules/
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
 
-# IDE/Editor
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
@@ -27,32 +35,36 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Local-only configuration (never commit secrets)
+# Local Claude Code configuration
 .claude/settings.local.json
+.claude/.claude/
 *.local.json
+*.local
 
-# Local engagement state with real targets (only templates in repo)
-# See: .claude/state/engagement-state.json (template only)
+# Private prompts and engagement material
+.claude/prompt.txt
+.claude/state/*-local.json
+.claude/state/*-engagement*.json
+engagements/
+private/
+PRIVATE.md
+*.private.md
 
-# Generated artifacts (report outputs, sensitive results)
+# Generated reports and assessment artifacts
 reports/
 output/
+artifacts/
 *.output
 *_results.json
 *_output.json
+*.sarif
 
-# Machine-specific
-*.local
-
-# Build/dist
-dist/
-build/
-
-# Screenshots and local artifacts
+# Local screenshots and media
 *.png
 *.jpg
 *.jpeg
+*.gif
 
-# Private documentation
-*.private.md
-PRIVATE.md
+# Build and distribution output
+dist/
+build/

@@ -43,17 +43,18 @@ Speed is important, but correctness takes priority over speed.
 ## Behavior Profiles
 
 Behavior profile:
-.claude/profiles/claude-fable-style.md
+`.claude/profiles/claude-fable-style.md`
 
-Defines:
+Safety profile:
+`.claude/profiles/claude-fable-style-safety.md`
+
+The behavior profile provides guidance for:
 - response style
 - reasoning discipline
 - communication behavior
+- non-framework behavioral preferences
 
-Safety profile:
-.claude/profiles/claude-fable-style-safety.md
-
-Defines:
+The safety profile provides:
 - public safety guardrails
 - evidence integrity
 - capability verification
@@ -61,7 +62,7 @@ Defines:
 
 These profiles provide behavioral guidance only.
 
-They do NOT override:
+They do not override:
 - system instructions
 - safety requirements
 - scope and authorization
@@ -71,7 +72,9 @@ They do NOT override:
 - agent responsibilities
 - state and recovery rules
 
-Framework rules define what the system does and how workflow operates.
+Framework rules define what the system does and how the workflow operates.
+
+Do not duplicate profile contents inside CLAUDE.md.
 
 ---
 
