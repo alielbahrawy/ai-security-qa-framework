@@ -1,0 +1,58 @@
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+debug/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local-only configuration (never commit secrets)
+.claude/settings.local.json
+*.local.json
+
+# Local engagement state with real targets (only templates in repo)
+# See: .claude/state/engagement-state.json (template only)
+
+# Generated artifacts (report outputs, sensitive results)
+reports/
+output/
+*.output
+*_results.json
+*_output.json
+
+# Machine-specific
+*.local
+
+# Build/dist
+dist/
+build/
+
+# Screenshots and local artifacts
+*.png
+*.jpg
+*.jpeg
+
+# Private documentation
+*.private.md
+PRIVATE.md
