@@ -10,6 +10,17 @@
   />
 </p>
 
+<p align="center">
+  <strong>Framework Foundation</strong>
+</p>
+
+<p align="center">
+  <span style="display:inline-block;background:#1a1a2e;color:#e8e8f0;padding:6px 14px;border-radius:20px;border:1px solid #3a3a5c;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;margin:0 6px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">⚖ Rules</span>
+  <span style="display:inline-block;background:#1a1a2e;color:#e8e8f0;padding:6px 14px;border-radius:20px;border:1px solid #3a3a5c;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;margin:0 6px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">⚙ Skills</span>
+  <span style="display:inline-block;background:#1a1a2e;color:#e8e8f0;padding:6px 14px;border-radius:20px;border:1px solid #3a3a5c;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;margin:0 6px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">📚 Knowledge</span>
+  <span style="display:inline-block;background:#1a1a2e;color:#e8e8f0;padding:6px 14px;border-radius:20px;border:1px solid #3a3a5c;font-family:system-ui,-apple-system,sans-serif;font-size:13px;font-weight:600;margin:0 6px;box-shadow:0 2px 8px rgba(0,0,0,0.3);">↻ State / Resume</span>
+</p>
+
 An open-source Claude Code framework for coordinated software analysis, authorized security assessment, functional QA, evidence validation, and professional reporting.
 
 ## What It Solves
