@@ -1,5 +1,15 @@
 # AI Security & QA Engineering Framework
 
+> AI-powered orchestration for security testing, code review, QA, vulnerability analysis, and reporting.
+
+<p align="center">
+  <img
+    src="docs/assets/architecture-diagram.png"
+    alt="AI Security & QA Engineering Framework Architecture"
+    width="100%"
+  />
+</p>
+
 An open-source Claude Code framework for coordinated software analysis, authorized security assessment, functional QA, evidence validation, and professional reporting.
 
 ## What It Solves
